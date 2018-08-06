@@ -1,0 +1,33 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+POST    /editProduct/:id                    @controllers.ProductsController.editProduct(id: Long)
+GET     /allproducts                        @controllers.ProductsController.getAllProducts
+GET     /product/:id                        @controllers.ProductsController.getOneProduct(id: Long)
+POST    /newproduct                         @controllers.ProductsController.newproduct
+DELETE  /deleteProduct/:id                  @controllers.ProductsController.deleteProduct(id: Long)
+
+
+GET     /allcategories                      @controllers.CategoriesController.getAllCategories
+GET     /category/:id                       @controllers.CategoriesController.getOneCategory(id: Int)
+POST    /newCategory                        @controllers.CategoriesController.newCategory
+DELETE  /deleteCategory/:id                 @controllers.CategoriesController.deleteCategory(id: Int)
+POST    /editCategory/:id                   @controllers.CategoriesController.editCategory(id: Int)
+
+GET     /allpayments                        @controllers.PaymentsControllers.getAllPayments
+GET     /payment/:id                        @controllers.PaymentsControllers.getOnePayment(id: Int)
+POST    /newPayment                         @controllers.PaymentsControllers.newPayment
+DELETE  /deletePayment/:id                  @controllers.PaymentsControllers.deletePayment(id: Int)
+POST    /editPayment/:id                    @controllers.PaymentsControllers.editPayment(id: Int)
+
+
+GET     /allShipments                       @controllers.ShipmentsController.getAllShipments
+GET     /shipment/:id                       @controllers.ShipmentsController.getOneShipment(id: Int)
+POST    /newShipment                        @controllers.ShipmentsController.newShipment
+DELETE  /deleteShipment/:id                 @controllers.ShipmentsController.deleteShipment(id: Int)
+POST    /editShipment/:id                   @controllers.ShipmentsController.editShipment(id: Int)
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
+
