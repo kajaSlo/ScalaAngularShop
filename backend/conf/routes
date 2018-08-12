@@ -31,3 +31,9 @@ POST    /editShipment/:id                   @controllers.ShipmentsController.edi
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
+POST    /addToCart                          @controllers.CartController.addToCart
+GET     /cart/:prodId                       @controllers.CartController.getCartContent(prodId: Long)
+DELETE  /deleteProduct/:prodId              @controllers.CartController.deleteProductFromTheCart(prodId: Long)
+DELETE  /emptyCart/:prodId                  @controllers.CartController.emptyCart(prodId: Long)
+
+

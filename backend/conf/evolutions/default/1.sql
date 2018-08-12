@@ -16,7 +16,7 @@ CREATE TABLE Products (
 
 );
 
-CREATE TABLE PaymentMethods (
+CREATE TABLE Payment (
   "paymentId" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
   "name" VARCHAR NOT NULL
 );
@@ -28,9 +28,17 @@ CREATE TABLE Shipping (
   "price" INT NOT NULL
 );
 
+
+CREATE TABLE Cart (
+ prodId INTEGER PRIMARY KEY NOT NULL,
+ FOREIGN KEY(prodId) REFERENCES Products(prodId) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+
 # --- !Downs
 
 DROP TABLE Products;
 drop table Category;
-DROP TABLE PaymentMethods;
+DROP TABLE Payment;
 DROP TABLE Shipping;
+DROP TABLE Cart;

@@ -49,7 +49,7 @@ class PaymentDAO @Inject() (protected val dbConfigProvider: DatabaseConfigProvid
   }
 
 
-  class PaymentsTable(tag: Tag) extends Table[Payments](tag, "PaymentMethods") {
+  class PaymentsTable(tag: Tag) extends Table[Payments](tag, "Payment") {
     def  paymentId:Rep[Int] = column[Int]("paymentId", O.PrimaryKey, O.AutoInc)
     def name = column[String]("name")
     def * = (paymentId, name) <> (models.Payments.tupled, models.Payments.unapply)

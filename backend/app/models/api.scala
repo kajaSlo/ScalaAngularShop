@@ -6,7 +6,7 @@ case class ProductsREST(title: String, description: String, quantity: Int, price
 case class CategoryREST(name: String) {}
 case class PaymentREST(name: String) {}
 case class ShippingREST(name: String, price: Int) {}
-
+case class CartREST(prodId: Long) {}
 
 object ProductsREST {
   implicit val productsFormat = Json.format[ProductsREST]
@@ -21,4 +21,7 @@ object PaymentREST {
 
 object ShippingREST {
   implicit val shippingFormat = Json.format[ShippingREST]
+}
+object CartREST {
+  implicit val cartFormat = Json.format[CartREST]
 }
