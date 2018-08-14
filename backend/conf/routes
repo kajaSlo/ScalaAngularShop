@@ -36,4 +36,7 @@ GET     /cart/:prodId                       @controllers.CartController.getCartC
 DELETE  /deleteProduct/:prodId              @controllers.CartController.deleteProductFromTheCart(prodId: Long)
 DELETE  /emptyCart/:prodId                  @controllers.CartController.emptyCart(prodId: Long)
 
-
+POST    /newOpinion                         @controllers.OpinionsController.newOpinion
+GET /getAllOpinionsByproduct/:prodId        @controllers.OpinionsController.getAllOpinionsByproduct(prodId: Long)
+GET /getOneOpinion/:opinionId               @controllers.OpinionsController.getOneOpinion(opinionId: Int)
+DELETE /deleteOpinion/:opinionId            @controllers.OpinionsController.deleteOpinion(opinionId: Int)

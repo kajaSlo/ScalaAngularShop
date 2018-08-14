@@ -64,7 +64,7 @@ class ProductsDAO @Inject()(protected val dbConfigProvider: DatabaseConfigProvid
 //  }
 
   class ProductsTable(tag: Tag) extends Table[Products](tag, "Products") {
-    def prodId = column[Long]("prodId",O.AutoInc, O.AutoInc)
+    def prodId = column[Long]("prodId",O.PrimaryKey, O.AutoInc)
     def catId = column[Int]("catId")
     def category_fk = foreignKey("category_fk", catId, Categories)(_.catId, ForeignKeyAction.Restrict, ForeignKeyAction.Cascade)
 

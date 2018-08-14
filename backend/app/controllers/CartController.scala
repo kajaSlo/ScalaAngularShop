@@ -11,7 +11,6 @@ import play.api.libs.concurrent.Execution.Implicits._
 class CartController @Inject() (cartsDAO: CartsDAO) extends Controller {
 
 
-  /////CATEGORIES
 
   def addToCart = Action { implicit request =>
     var json:CartREST = request.body.asJson.get.as[CartREST]

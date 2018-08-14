@@ -11,6 +11,7 @@ case class Categories(catId: Int, name: String) {}
 case class Payments(paymentId: Int, name: String) {}
 case class Shipments(shippingId: Int, name: String, price: Int) {}
 case class Carts(prodId: Long)
+case class Opinions(opinionId: Int, prodId: Long, content: String)
 
 
 

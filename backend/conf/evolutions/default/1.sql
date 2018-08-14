@@ -34,6 +34,12 @@ CREATE TABLE Cart (
  FOREIGN KEY(prodId) REFERENCES Products(prodId) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
+CREATE TABLE Opinion (
+ "opinionId" INTEGER PRIMARY KEY NOT NULL,
+ "prodId" INTEGER NOT NULL,
+ "content" VARCHAR NOT NULL,
+ FOREIGN KEY(prodId) REFERENCES Products(prodId) ON DELETE CASCADE ON UPDATE CASCADE
+);
 
 # --- !Downs
 
@@ -42,3 +48,4 @@ drop table Category;
 DROP TABLE Payment;
 DROP TABLE Shipping;
 DROP TABLE Cart;
+DROP TABLE Opinion;
