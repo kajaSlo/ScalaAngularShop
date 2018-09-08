@@ -8,6 +8,7 @@ GET     /allproducts                        @controllers.ProductsController.getA
 GET     /product/:id                        @controllers.ProductsController.getOneProduct(id: Long)
 POST    /newproduct                         @controllers.ProductsController.newproduct
 DELETE  /deleteProduct/:id                  @controllers.ProductsController.deleteProduct(id: Long)
+GET     /productsByCategory/:catId          @controllers.ProductsController.productsByCategory(catId: Int)
 
 
 GET     /allcategories                      @controllers.CategoriesController.getAllCategories

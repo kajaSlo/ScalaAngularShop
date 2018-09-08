@@ -28,6 +28,12 @@ class ProductsController @Inject()(productsDAO: ProductsDAO, categoriesDAO: Cate
     }
   }
 
+  def productsByCategory(catId: Int) = Action.async { implicit  request =>
+    productsDAO.getProductsByCategory(catId) map {
+      result => Ok(Json.toJson(result))
+    }
+  }
+
 //  def editProduct(typeId: Long) = Action.async { implicit request =>
 //    var json:ProductsREST = request.body.asJson.get.as[ProductsREST]
 //    var newProduct = Products(prodId = 0, title = json.title, description = json.description, quantity = json.quantity, price = json.price)

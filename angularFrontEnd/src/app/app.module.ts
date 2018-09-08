@@ -12,12 +12,22 @@ import { ProductComponent } from './components/product/product.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AdminProfileComponent } from './components/admin-profile/admin-profile.component';
 import { CategoriesComponent } from './components/categories/categories.component';
+import { AllAndWithCatProductsComponent } from './components/all-and-with-cat-products/all-and-with-cat-products.component';
+import { ProductsByCategoryComponent } from './components/products-by-category/products-by-category.component';
+import { HelloComponentComponent } from './components/hello-component/hello-component.component';
+import { AdminProductsComponent } from './components/admin-products/admin-products.component';
 
 const appRoutes: Routes = [
  // {path: ':product', component: ProductComponent},
   {path: 'categories', component: CategoriesComponent},
   {path: 'admin', component: AdminProfileComponent},
-  {path: '', component: ProductComponent},
+  {path: 'allProducts', component: ProductComponent},
+  {path: 'productsByCategory/:id', component: ProductsByCategoryComponent},
+  {path: 'admin/products', component: AdminProductsComponent},
+  {path: '', component: HelloComponentComponent},
+  //{path: '', component: AllAndWithCatProductsComponent},
+
+
 
 
 ]
@@ -28,7 +38,12 @@ const appRoutes: Routes = [
     ProductComponent,
     NavbarComponent,
     AdminProfileComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    AllAndWithCatProductsComponent,
+    ProductsByCategoryComponent,
+    HelloComponentComponent,
+    AdminProductsComponent,
+    
   ],
   imports: [
     BrowserModule,

@@ -39,6 +39,14 @@ class ProductsDAO @Inject()(protected val dbConfigProvider: DatabaseConfigProvid
     )
   }
 
+  def getProductsByCategory(catId: Int): Future[List[ProductsREST]] = {
+    val futureProducts = db.run(Products.filter(_.catId === catId).result)
+    futureProducts.map(
+      _.map {
+        a => ProductsREST(description = a.description, title = a.title, quantity = a.quantity, price = a.price, catId = a.catId)
+      }.toList)
+  }
+
   def delete(prodId: Long): Future[Int] = db.run(Products.filter(_.prodId === prodId).delete)
 
 //  def edit(prodId: Long, product: Products): Future[Int] = {

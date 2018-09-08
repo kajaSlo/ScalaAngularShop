@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+nav.admin {
+    background: orange;
+    position: initial;
+    width: 350px;
+    top: 0px;
+    left: 10px;
+    margin-bottom: 0px;
+    margin-left: 10px;
+}
+
+
+nav.admin li a {
+    color: white !important;
+    font-weight: bold;
+    
+
+}
+
+nav.admin li  {
+    border-style: solid;
+    background: orange;
+
+
+}
+
+div.space {
+    padding-left: 180px;
+}
