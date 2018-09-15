@@ -1,4 +1,3 @@
-import { CategoryService } from './category.service';
 import { Injectable } from '@angular/core';
 import {Http} from '@angular/http';
 import { BehaviorSubject } from 'rxjs';
@@ -10,8 +9,8 @@ import {forkJoin} from 'rxjs';
 })
 export class ProductService {
 
-  servicePod: any;
-  constructor(private http: Http, private categoryService: CategoryService) { }
+
+  constructor(private http: Http) { }
 
   public productsBS = new BehaviorSubject<string>(null);
 
@@ -21,6 +20,11 @@ export class ProductService {
 
   getProductsByCategory(id){
     return this.http.get('http://localhost:9000/productsByCategory/' + id).pipe(map(res => res.json()))
+  }
+
+  postAddProduct(value){
+    return this.http.post('http://localhost:9000/newproduct' , value).pipe(map(res => res.json()))
+   
   }
 
  

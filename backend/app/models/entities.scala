@@ -6,7 +6,7 @@ import play.api.libs.json.Format
 
 
 
-case class Products(prodId: Long, title: String, description: String, quantity: Int, price: Float, catId: Int) {}
+case class Products(prodId: Long, title: String, description: String,price: Float, catId: Int) {}
 case class Categories(catId: Int, name: String) {}
 case class Payments(paymentId: Int, name: String) {}
 case class Shipments(shippingId: Int, name: String, price: Int) {}

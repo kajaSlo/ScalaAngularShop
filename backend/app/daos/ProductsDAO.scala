@@ -23,7 +23,7 @@ class ProductsDAO @Inject()(protected val dbConfigProvider: DatabaseConfigProvid
     val futureProducts = db.run(results)
     futureProducts.map(
       _.map {
-        a => ProductsREST(description = a.description, title = a.title, quantity = a.quantity, price = a.price, catId = a.catId)
+        a => ProductsREST(prodId = a.prodId,description = a.description, title = a.title, price = a.price, catId = a.catId)
       }.toList)
   }
 
@@ -34,7 +34,7 @@ class ProductsDAO @Inject()(protected val dbConfigProvider: DatabaseConfigProvid
 
     product.map(
       _.map {
-        a => ProductsREST(description = a.description, title = a.title, quantity = a.quantity, price = a.price, catId = a.catId)
+        a => ProductsREST(prodId = a.prodId,description = a.description, title = a.title, price = a.price, catId = a.catId)
       }
     )
   }
@@ -43,7 +43,7 @@ class ProductsDAO @Inject()(protected val dbConfigProvider: DatabaseConfigProvid
     val futureProducts = db.run(Products.filter(_.catId === catId).result)
     futureProducts.map(
       _.map {
-        a => ProductsREST(description = a.description, title = a.title, quantity = a.quantity, price = a.price, catId = a.catId)
+        a => ProductsREST(prodId = a.prodId,description = a.description, title = a.title, price = a.price, catId = a.catId)
       }.toList)
   }
 
@@ -78,10 +78,9 @@ class ProductsDAO @Inject()(protected val dbConfigProvider: DatabaseConfigProvid
 
     def title = column[String]("title")
     def description = column[String]("description")
-    def quantity:Rep[Int] = column[Int]("quantity")
     def price:Rep[Float] = column[Float]("price")
 
-    def * = (prodId, title, description, quantity, price, catId) <> (models.Products.tupled, models.Products.unapply)
+    def * = (prodId, title, description,price, catId) <> (models.Products.tupled, models.Products.unapply)
   }
 
 }

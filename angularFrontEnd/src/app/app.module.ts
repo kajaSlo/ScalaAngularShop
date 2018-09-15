@@ -16,6 +16,9 @@ import { AllAndWithCatProductsComponent } from './components/all-and-with-cat-pr
 import { ProductsByCategoryComponent } from './components/products-by-category/products-by-category.component';
 import { HelloComponentComponent } from './components/hello-component/hello-component.component';
 import { AdminProductsComponent } from './components/admin-products/admin-products.component';
+import { AdminAddProductComponent } from './components/admin-add-product/admin-add-product.component';
+import { AdminCategoriesComponent } from './components/admin-categories/admin-categories.component';
+import { AdminAddCategoryComponent } from './components/admin-add-category/admin-add-category.component';
 
 const appRoutes: Routes = [
  // {path: ':product', component: ProductComponent},
@@ -24,9 +27,14 @@ const appRoutes: Routes = [
   {path: 'allProducts', component: ProductComponent},
   {path: 'productsByCategory/:id', component: ProductsByCategoryComponent},
   {path: 'admin/products', component: AdminProductsComponent},
+  {path: 'admin/add-product', component: AdminAddProductComponent},
+  {path: 'admin/categories', component: AdminCategoriesComponent},
+  {path: 'admin/add-category', component: AdminAddCategoryComponent},
+
+
+  
   {path: '', component: HelloComponentComponent},
   //{path: '', component: AllAndWithCatProductsComponent},
-
 
 
 
@@ -43,6 +51,9 @@ const appRoutes: Routes = [
     ProductsByCategoryComponent,
     HelloComponentComponent,
     AdminProductsComponent,
+    AdminAddProductComponent,
+    AdminCategoriesComponent,
+    AdminAddCategoryComponent,
     
   ],
   imports: [

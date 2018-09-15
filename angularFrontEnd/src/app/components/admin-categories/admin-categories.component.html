@@ -1,0 +1,32 @@
+<p>
+  admin-categories works!
+</p>
+
+  
+<app-admin-profile></app-admin-profile> 
+
+  <h1 class="product-title">Categories</h1>
+  <a class="btn btn-primary" routerLink="/admin/add-category">Add a category</a>
+  <br><br>
+
+
+<table class="table">
+    <tr bgcolor="#f9f9f9">
+        <th>Title</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+
+    <tr *ngFor="let category of categories?.value">
+        <td>
+            {{ category.name }}
+        </td>
+        <td>
+            <a routerLink="/admin/edit-category/{{ category.catId }}">Edit</a>
+        </td>
+        <td>
+            <a (click)="deleteCategory(category.catId)" routerLink="/admin/categories">Delete</a>
+        </td>
+    </tr>
+</table>
+   

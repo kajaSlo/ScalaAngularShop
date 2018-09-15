@@ -59,7 +59,7 @@ class ProductsController @Inject()(productsDAO: ProductsDAO, categoriesDAO: Cate
     var json:ProductsREST = request.body.asJson.get.as[ProductsREST]
 
     println(json:ProductsREST);
-    var product = Products(prodId = 0, title = json.title, description = json.description, quantity = json.quantity, price = json.price, catId = json.catId)
+    var product = Products(prodId = 0, title = json.title, description = json.description, price = json.price, catId = json.catId)
     productsDAO.edit(id, product) map {
       result => Ok(Json.toJson(result))
     }
@@ -67,7 +67,7 @@ class ProductsController @Inject()(productsDAO: ProductsDAO, categoriesDAO: Cate
 
   def newproduct = Action { implicit request =>
     var json:ProductsREST = request.body.asJson.get.as[ProductsREST]
-    var product = Products(prodId = 0, title = json.title, description = json.description, quantity = json.quantity, price = json.price, catId = json.catId)
+    var product = Products(prodId = 0, title = json.title, description = json.description, price = json.price, catId = json.catId)
     productsDAO.insert(product)
     Ok(request.body.asJson.get)
   }

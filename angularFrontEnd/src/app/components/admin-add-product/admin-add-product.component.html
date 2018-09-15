@@ -1,0 +1,53 @@
+<p>
+  admin-add-product works!
+</p>
+
+<!--<div class="alert alert-success" *ngIf="successMsg">
+  <p>Product added.</p>
+</div> -->
+
+
+<h1 class="product-title">Add a product</h1>
+<a class="btn btn-primary" routerLink="/admin/products">Back to all products</a>
+<br><br>
+
+<form novalidate #f="ngForm" (ngSubmit)="addProduct(f)">
+
+  <div class="form-group">
+    <label for="">prodId:</label>
+    <input type="text" class="form-control" placeholder="prodId" name="prodId" [(ngModel)]="prodId" required />
+  </div> 
+
+  <div class="form-group">
+      <label for="">Title:</label>
+      <input type="text" class="form-control" placeholder="Title" name="title" [(ngModel)]="title" #productTitle="ngModel"
+          minlength="3" required />
+  </div>
+  <div class="alert alert-danger" *ngIf="productTitle.errors?.required && productTitle.touched">
+      Title is required.
+  </div>
+  <div class="alert alert-danger" *ngIf="productTitle.errors?.minlength && productTitle.touched">
+      Minimum length is 3.
+  </div>
+
+  <div class="form-group">
+      <label for="">Description:</label>
+      <textarea class="form-control" name="description" cols="30" rows="10" placeholder="Description" 
+      [(ngModel)]="description"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="">Price:</label>
+    <input type="text" class="form-control" placeholder="Price" name="price" [(ngModel)]="price" required />
+  </div>
+
+  <div class="form-group">
+    <label for="">catId:</label>
+    <input type="text" class="form-control" placeholder="catId" name="catId" [(ngModel)]="catId" required />
+  </div> 
+
+  <div class="form-group">
+      <button class="btn btn-default" [disabled]="!f.valid">Add product</button>
+  </div>
+
+</form>

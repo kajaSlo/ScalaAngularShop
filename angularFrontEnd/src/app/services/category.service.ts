@@ -17,4 +17,8 @@ export class CategoryService {
     return this.http.get('http://localhost:9000/allcategories').pipe(map(res => res.json())) 
   }
 
+  postAddCategory(value){
+    return this.http.post('http://localhost:9000/newCategory ', value ).pipe(map(res => res.json()))
+  }
+
 }

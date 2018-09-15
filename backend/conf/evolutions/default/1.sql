@@ -9,7 +9,6 @@ CREATE TABLE Products (
  "prodId" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
  "title" VARCHAR  NOT NULL,
  "description" TEXT NOT NULL,
- "quantity" INTEGER NOT NULL,
  "price" FLOAT NOT NULL,
  "catId" int not null,
  foreign key("catId") references Category(catId) ON DELETE CASCADE ON UPDATE CASCADE
