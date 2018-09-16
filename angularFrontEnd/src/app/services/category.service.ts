@@ -21,4 +21,17 @@ export class CategoryService {
     return this.http.post('http://localhost:9000/newCategory ', value ).pipe(map(res => res.json()))
   }
 
+  getEditCategory(id){
+    return this.http.get('http://localhost:9000/category/' + id ).pipe(map(res => res.json()));
+  }
+
+  postEditCategory(value){
+    return this.http.post('http://localhost:9000/editCategory/'+value.catId, value ).pipe(map(res => res.json()))
+  }
+
+  deleteCategory(id){
+    return this.http.delete('http://localhost:9000/deleteCategory/' + id).pipe(map(res => res.json()))
+   
+  }
+
 }

@@ -1,9 +1,9 @@
 
-<h1 class="product-title">Add a category</h1>
+<h1 class="product-title">Edit {{category?.name}} category</h1>
   <a class="btn btn-primary" routerLink="/admin/categories">Back to categories</a>
   <br><br>
 
-  <form novalidate #f="ngForm" (ngSubmit)="addCategory(f)">
+  <form novalidate #f="ngForm" (ngSubmit)="editCategory(f)">
 
     <!-- <div class="form-group">
       <label for="">CatId:</label>
@@ -14,6 +14,7 @@
        Id is required.
     </div> -->
 
+    <input type="hidden" name="catId" [(ngModel)]="catId">
     <div class="form-group">
         <label for="">Name:</label>
         <input type="text" class="form-control" placeholder="name" name="name" [(ngModel)]="name" #categoryName="ngModel"
@@ -25,9 +26,8 @@
     <div class="alert alert-danger" *ngIf="categoryName.errors?.minlength && categoryName.touched">
         Minimum length is 3.
     </div>
-
     <div class="form-group">
-        <button class="btn btn-default" [disabled]="!f.valid">Add category</button>
+        <button class="btn btn-default" [disabled]="!f.valid">Edit category</button>
     </div>
 
 </form>

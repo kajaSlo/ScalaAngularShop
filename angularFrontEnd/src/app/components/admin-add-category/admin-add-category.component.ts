@@ -37,8 +37,7 @@ export class AdminAddCategoryComponent implements OnInit {
     if (valid) {
       console.log(this.name);
 
-      let idAsJson = JSON.parse(JSON.stringify(this.objWithId));
-     
+      let idAsJson = JSON.parse(JSON.stringify(this.objWithId));  
       let allInformationsAsJson = Object.assign(idAsJson,value);
   
       this.categoryService.postAddCategory(allInformationsAsJson).subscribe( res => {
@@ -46,8 +45,7 @@ export class AdminAddCategoryComponent implements OnInit {
         this.categoryService.getCategories().subscribe(categories => {
           this.categoryService.categoriesBS.next(categories);
           })
-      })
-           
+      })          
               
     } else {
         console.log('Form is not valid.');
