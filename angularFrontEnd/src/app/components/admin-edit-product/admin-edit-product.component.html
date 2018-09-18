@@ -1,14 +1,11 @@
 
-<!--<div class="alert alert-success" *ngIf="successMsg">
-  <p>Product added.</p>
-</div> -->
-
-
-<h1 class="product-title">Add a product</h1>
+<h1 class="product-title">Edit {{product?.name}} product</h1>
 <a class="btn btn-primary" routerLink="/admin/products">Back to all products</a>
 <br><br>
 
-<form novalidate #f="ngForm" (ngSubmit)="addProduct(f)">
+<form novalidate #f="ngForm" (ngSubmit)="editProduct(f)">
+
+    <input type="hidden" name="prodId" [(ngModel)]="prodId">
 
   <div class="form-group">
       <label for="">Title:</label>
@@ -42,7 +39,7 @@
   </div> 
 
   <div class="form-group">
-      <button class="btn btn-default" [disabled]="!f.valid">Add product</button>
+      <button class="btn btn-default" [disabled]="!f.valid">Edit product</button>
   </div>
 
 </form>

@@ -23,9 +23,17 @@ export class ProductService {
   }
 
   postAddProduct(value){
-    return this.http.post('http://localhost:9000/newproduct' , value).pipe(map(res => res.json()))
-   
+    return this.http.post('http://localhost:9000/newproduct' , value).pipe(map(res => res.json())) 
   }
+
+  getEditProduct(id){
+    return this.http.get('http://localhost:9000/product/' + id ).pipe(map(res => res.json()));
+  }
+
+  postEditProduct(value){
+    return this.http.post('http://localhost:9000/editProduct/'+value.prodId, value ).pipe(map(res => res.json()))
+  }
+
 
  
 }

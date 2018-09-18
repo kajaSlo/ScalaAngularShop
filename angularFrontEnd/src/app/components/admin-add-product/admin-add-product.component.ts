@@ -1,5 +1,11 @@
+import { CategoryService } from './../../services/category.service';
 import { ProductService } from './../../services/product.service';
 import { Component, OnInit } from '@angular/core';
+
+
+class ProductId {
+  prodId: number;
+}
 
 @Component({
   selector: 'app-admin-add-product',
@@ -10,56 +16,49 @@ export class AdminAddProductComponent implements OnInit {
 
   public successMsg: boolean = false;
 
-  public prodId: number;
+  //public prodId: number;
+  objWithId: ProductId = new ProductId();
+  public amountOfProducts = [];
   public title: string;
   public description: string;
   public price: number;
   public catId: number;
+  public categories: any;
 
   constructor(
-    private productService: ProductService
+    private productService: ProductService,
+    private categoryService: CategoryService
   ) { }
 
   ngOnInit() {
+
+    this.productService.getProducts().subscribe( res => {
+      this.amountOfProducts = res;
+    });
+
+    this.objWithId.prodId = this.amountOfProducts.length + 1;
+
+    this.categoryService.getCategories().subscribe ( res => {
+
+      this.categories = res;
+
+    });
   }
 
   addProduct({form, value, valid}) {
-    console.log(this.prodId);
-        console.log(this.title);
-        console.log(this.description);
-
-        console.log(this.price);
-        console.log(this.catId);
-    console.log("------------------");
+  
     form.reset();
-    console.log("------------------");
     if (valid) {
-      console.log("form is valid");
-      this.productService.postAddProduct(value).subscribe(res => {
-          //   this.successMsg = true;
-          //   setTimeout(function() {
-          //   this.successMsg = false;
-          // }.bind(this),2000);
-          console.log("------------------");
+  
+      let idAsJson = JSON.parse(JSON.stringify(this.objWithId));  
+      let allInformationsAsJson = Object.assign(idAsJson,value);
 
-              //updating productBS observable after a product is added
+      console.log(allInformationsAsJson);
+      this.productService.postAddProduct(allInformationsAsJson).subscribe(res => {
+
             this.productService.getProducts().subscribe(products => {
             this.productService.productsBS.next(products);
         })
-
-        console.log("------------------");
-        console.log("------------------");
-        console.log("------------------");
-        console.log("------------------");
-        console.log("------------------");
-        console.log("------------------");
-        console.log("------------------");
-        console.log("------------------");
-
-        
-
-
-
           
       });
   } else {
@@ -69,3 +68,4 @@ export class AdminAddProductComponent implements OnInit {
   }
 
 }
+

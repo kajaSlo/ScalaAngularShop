@@ -20,6 +20,7 @@ import { AdminAddProductComponent } from './components/admin-add-product/admin-a
 import { AdminCategoriesComponent } from './components/admin-categories/admin-categories.component';
 import { AdminAddCategoryComponent } from './components/admin-add-category/admin-add-category.component';
 import { AdminEditCategoryComponent } from './components/admin-edit-category/admin-edit-category.component';
+import { AdminEditProductComponent } from './components/admin-edit-product/admin-edit-product.component';
 
 const appRoutes: Routes = [
  // {path: ':product', component: ProductComponent},
@@ -29,13 +30,11 @@ const appRoutes: Routes = [
   {path: 'productsByCategory/:id', component: ProductsByCategoryComponent},
   {path: 'admin/products', component: AdminProductsComponent},
   {path: 'admin/add-product', component: AdminAddProductComponent},
+  {path: 'admin/edit-product/:prodId', component: AdminEditProductComponent},
   {path: 'admin/categories', component: AdminCategoriesComponent},
   {path: 'admin/add-category', component: AdminAddCategoryComponent},
   {path: 'admin/edit-category/:catId', component: AdminEditCategoryComponent},
 
-
-
-  
   {path: '', component: HelloComponentComponent},
   //{path: '', component: AllAndWithCatProductsComponent},
 
@@ -58,6 +57,7 @@ const appRoutes: Routes = [
     AdminCategoriesComponent,
     AdminAddCategoryComponent,
     AdminEditCategoryComponent,
+    AdminEditProductComponent,
     
   ],
   imports: [

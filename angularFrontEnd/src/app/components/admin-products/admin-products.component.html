@@ -35,7 +35,7 @@
             {{ product.title }}
         </td>
         <td>
-            <a routerLink="/admin/edit-product/{{ product._id }}">Edit</a>
+            <a routerLink="/admin/edit-product/{{product.prodId}}">Edit</a>
         </td>
         <td>
             <a (click)="deleteProduct(product._id)" routerLink="/admin/products">Delete</a>
