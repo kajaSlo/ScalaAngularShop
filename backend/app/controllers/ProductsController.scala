@@ -8,6 +8,7 @@ import play.api.libs.json.Json
 import play.api.mvc._
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
 import play.api.libs.concurrent.Execution.Implicits._
+
 class ProductsController @Inject()(productsDAO: ProductsDAO, categoriesDAO: CategoriesDAO) extends Controller {
 
   def getAllProducts = Action.async { implicit  request =>
@@ -16,8 +17,8 @@ class ProductsController @Inject()(productsDAO: ProductsDAO, categoriesDAO: Cate
     }
   }
 
-  def deleteProduct(typeId: Long) = Action.async { implicit request =>
-    productsDAO.delete(typeId) map {
+  def deleteProduct(id: Long) = Action.async { implicit request =>
+    productsDAO.delete(id) map {
       result => Ok(Json.toJson(result))
     }
   }
@@ -34,31 +35,9 @@ class ProductsController @Inject()(productsDAO: ProductsDAO, categoriesDAO: Cate
     }
   }
 
-//  def editProduct(typeId: Long) = Action.async { implicit request =>
-//    var json:ProductsREST = request.body.asJson.get.as[ProductsREST]
-//    var newProduct = Products(prodId = 0, title = json.title, description = json.description, quantity = json.quantity, price = json.price)
-//    productsDAO.editProd(typeId, newProduct) map {
-//      result => Ok(Json.toJson(result))
-//    }
-//  }
-
-
-//  def editproducttype(prodId: Long) = Action.async { implicit request =>
-//    var json: ProductsREST = request.body.asJson.get.as[ProductsREST]
-//    var product = Products(prodId = 0, title = json.title, description = json.description, quantity = json.quantity, price = json.price)
-//    productsDAO.edit(prodId, product) map {
-//      result => Ok(Json.toJson(result))
-//    }
-//  }
-
   def editProduct(id: Long) = Action.async { implicit request =>
-    println("-----------------------------------------------------");
-    println("-----------------------------------------------------");
-    println("-----------------------------------------------------");
 
     var json:ProductsREST = request.body.asJson.get.as[ProductsREST]
-
-    println(json:ProductsREST);
     var product = Products(prodId = 0, title = json.title, description = json.description, price = json.price, catId = json.catId)
     productsDAO.edit(id, product) map {
       result => Ok(Json.toJson(result))

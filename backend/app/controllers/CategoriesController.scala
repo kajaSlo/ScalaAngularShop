@@ -7,10 +7,8 @@ import play.api.libs.json.Json
 import play.api.mvc._
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
 import play.api.libs.concurrent.Execution.Implicits._
+
 class CategoriesController @Inject() (categoriesDAO: CategoriesDAO) extends Controller {
-
-
-  /////CATEGORIES
 
   def newCategory = Action { implicit request =>
     var json:CategoryREST = request.body.asJson.get.as[CategoryREST]
@@ -37,9 +35,7 @@ class CategoriesController @Inject() (categoriesDAO: CategoriesDAO) extends Cont
     }
   }
 
-
   def editCategory(id: Int) = Action.async { implicit request =>
-
 
     var json:CategoryREST = request.body.asJson.get.as[CategoryREST]
 

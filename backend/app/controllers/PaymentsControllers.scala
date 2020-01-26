@@ -1,5 +1,3 @@
-
-
 package controllers
 
 import javax.inject.Inject
@@ -9,10 +7,8 @@ import play.api.libs.json.Json
 import play.api.mvc._
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
 import play.api.libs.concurrent.Execution.Implicits._
+
 class PaymentsControllers @Inject() (paymentDAO: PaymentDAO) extends Controller {
-
-
-  /////CATEGORIES
 
   def newPayment = Action { implicit request =>
     var json:PaymentREST = request.body.asJson.get.as[PaymentREST]
@@ -28,7 +24,7 @@ class PaymentsControllers @Inject() (paymentDAO: PaymentDAO) extends Controller 
   }
 
   def getOnePayment(paymentId: Int) = Action.async { implicit request =>
-    paymentDAO.getOnePaymentMet(paymentId) map {
+    paymentDAO.getOnePayment(paymentId) map {
       paymentType => Ok(Json.toJson(paymentType))
     }
   }
@@ -39,14 +35,12 @@ class PaymentsControllers @Inject() (paymentDAO: PaymentDAO) extends Controller 
     }
   }
 
-
   def editPayment(id: Int) = Action.async { implicit request =>
-
 
     var json:PaymentREST = request.body.asJson.get.as[PaymentREST]
 
-    var pay = Payments(paymentId = 0, name = json.name)
-    paymentDAO.edit(id, pay) map {
+    var payment = Payments(paymentId = 0, name = json.name)
+    paymentDAO.edit(id, payment) map {
       result => Ok(Json.toJson(result))
     }
   }

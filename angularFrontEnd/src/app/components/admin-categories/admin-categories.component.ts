@@ -14,24 +14,18 @@ export class AdminCategoriesComponent implements OnInit {
 
   ngOnInit() {
     this.categoryService.getCategories().subscribe( categories => {
- 
       this.categoryService.categoriesBS.next(categories);
       this.categories = this.categoryService.categoriesBS;
     });
   }
 
   deleteCategory(catId){
-
-
     if(confirm('Confirm deletion')){
-
       this.categoryService.deleteCategory(catId).subscribe( res => {
-
         this.categoryService.getCategories().subscribe ( categories => {
           this.categoryService.categoriesBS.next(categories);
         })
       })
     }
   }
-
 }

@@ -1,4 +1,3 @@
-
 package controllers
 
 import javax.inject.Inject
@@ -8,8 +7,8 @@ import play.api.libs.json.Json
 import play.api.mvc._
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
 import play.api.libs.concurrent.Execution.Implicits._
-class OpinionsController @Inject() (opinionsDAO: OpinionsDAO) extends Controller {
 
+class OpinionsController @Inject() (opinionsDAO: OpinionsDAO) extends Controller {
 
   def newOpinion = Action { implicit request =>
     var json:OpinionREST = request.body.asJson.get.as[OpinionREST]
@@ -35,7 +34,5 @@ class OpinionsController @Inject() (opinionsDAO: OpinionsDAO) extends Controller
       result => Ok(Json.toJson(result))
     }
   }
-
-
 
 }

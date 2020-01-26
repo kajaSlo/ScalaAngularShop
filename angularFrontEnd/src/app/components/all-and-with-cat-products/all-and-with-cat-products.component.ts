@@ -14,10 +14,8 @@ export class AllAndWithCatProductsComponent implements OnInit {
 
   ngOnInit() {
     this.categoryService.getCategories().subscribe( categories => {
- 
       this.categoryService.categoriesBS.next(categories);
       this.categories = this.categoryService.categoriesBS;
     });
   }
-
 }

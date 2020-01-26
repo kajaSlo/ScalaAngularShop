@@ -2,13 +2,11 @@ import { Injectable } from '@angular/core';
 import {Http} from '@angular/http';
 import { BehaviorSubject } from 'rxjs';
 import {map} from 'rxjs/operators';
-import {forkJoin} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-
 
   constructor(private http: Http) { }
 
@@ -34,6 +32,8 @@ export class ProductService {
     return this.http.post('http://localhost:9000/editProduct/'+value.prodId, value ).pipe(map(res => res.json()))
   }
 
-
+  deleteProduct(id){
+    return this.http.delete('http://localhost:9000/deleteProduct/' + id).pipe(map(res => res.json()))  
+  }
  
 }

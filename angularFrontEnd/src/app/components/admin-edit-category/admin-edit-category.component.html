@@ -2,18 +2,7 @@
 <h1 class="product-title">Edit {{category?.name}} category</h1>
   <a class="btn btn-primary" routerLink="/admin/categories">Back to categories</a>
   <br><br>
-
   <form novalidate #f="ngForm" (ngSubmit)="editCategory(f)">
-
-    <!-- <div class="form-group">
-      <label for="">CatId:</label>
-      <input type="number" class="form-control" placeholder="catId" name="catId" [(ngModel)]="catId" #categoryId="ngModel"
-           required />
-    </div>
-    <div class="alert alert-danger" *ngIf="categoryId.errors?.required && categoryId.touched">
-       Id is required.
-    </div> -->
-
     <input type="hidden" name="catId" [(ngModel)]="catId">
     <div class="form-group">
         <label for="">Name:</label>
@@ -29,5 +18,4 @@
     <div class="form-group">
         <button class="btn btn-default" [disabled]="!f.valid">Edit category</button>
     </div>
-
 </form>

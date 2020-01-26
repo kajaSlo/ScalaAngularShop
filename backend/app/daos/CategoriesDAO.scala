@@ -1,6 +1,5 @@
 package daos
 
-
 import javax.inject.Inject
 import models.{Categories, CategoryREST}
 import play.api.db.slick.{DatabaseConfigProvider, HasDatabaseConfigProvider}
@@ -27,10 +26,8 @@ class CategoriesDAO @Inject() (protected val dbConfigProvider: DatabaseConfigPro
     )
   }
 
-
   def getOneCat(catId: Int): Future[Option[CategoryREST]] = {
     val category = db.run(Categories.filter(_.catId === catId).result.headOption)
-
     category.map(
       _.map {
         a => CategoryREST(catId = a.catId ,name = a.name)
@@ -44,15 +41,13 @@ class CategoriesDAO @Inject() (protected val dbConfigProvider: DatabaseConfigPro
 
   def edit(catId: Int, category: Categories): Future[Int] = {
     val toUpdate: Categories = category.copy(catId = catId)
-    // val toUpdate = product.copy(prodId = id)
-    //db.run(Products.update(toUpdate))
     db.run(Categories.filter(_.catId === catId).update(toUpdate))
   }
-
 
   class CategoriesTable(tag: Tag) extends Table[Categories](tag, "Category") {
     def  catId:Rep[Int] = column[Int]("catId", O.PrimaryKey, O.AutoInc)
     def name = column[String]("name")
     def * = (catId, name) <> (models.Categories.tupled, models.Categories.unapply)
   }
+  
 }

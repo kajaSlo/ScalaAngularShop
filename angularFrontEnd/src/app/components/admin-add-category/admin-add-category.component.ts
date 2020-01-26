@@ -11,7 +11,6 @@ class CategoryId {
   styleUrls: ['./admin-add-category.component.css']
 })
 
- 
 export class AdminAddCategoryComponent implements OnInit {
 
   objWithId: CategoryId = new CategoryId();
@@ -27,26 +26,21 @@ export class AdminAddCategoryComponent implements OnInit {
         this.amountOfCategories = res;
       }
     )
-
     this.objWithId.catId = this.amountOfCategories.length + 1;  
   }
-
 
   addCategory({form, value, valid}) {
     form.reset();
     if (valid) {
-      console.log(this.name);
-
+      
       let idAsJson = JSON.parse(JSON.stringify(this.objWithId));  
       let allInformationsAsJson = Object.assign(idAsJson,value);
   
       this.categoryService.postAddCategory(allInformationsAsJson).subscribe( res => {
-
         this.categoryService.getCategories().subscribe(categories => {
           this.categoryService.categoriesBS.next(categories);
           })
-      })          
-              
+      })                      
     } else {
         console.log('Form is not valid.');
     }

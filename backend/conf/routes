@@ -1,15 +1,9 @@
-# Routes
-# This file defines all application routes (Higher priority routes first)
-# ~~~~
-
-# Home page
 POST    /editProduct/:id                    @controllers.ProductsController.editProduct(id: Long)
 GET     /allproducts                        @controllers.ProductsController.getAllProducts
 GET     /product/:id                        @controllers.ProductsController.getOneProduct(id: Long)
 POST    /newproduct                         @controllers.ProductsController.newproduct
 DELETE  /deleteProduct/:id                  @controllers.ProductsController.deleteProduct(id: Long)
 GET     /productsByCategory/:catId          @controllers.ProductsController.productsByCategory(catId: Int)
-
 
 GET     /allcategories                      @controllers.CategoriesController.getAllCategories
 GET     /category/:id                       @controllers.CategoriesController.getOneCategory(id: Int)
@@ -23,19 +17,16 @@ POST    /newPayment                         @controllers.PaymentsControllers.new
 DELETE  /deletePayment/:id                  @controllers.PaymentsControllers.deletePayment(id: Int)
 POST    /editPayment/:id                    @controllers.PaymentsControllers.editPayment(id: Int)
 
-
 GET     /allShipments                       @controllers.ShipmentsController.getAllShipments
 GET     /shipment/:id                       @controllers.ShipmentsController.getOneShipment(id: Int)
 POST    /newShipment                        @controllers.ShipmentsController.newShipment
 DELETE  /deleteShipment/:id                 @controllers.ShipmentsController.deleteShipment(id: Int)
 POST    /editShipment/:id                   @controllers.ShipmentsController.editShipment(id: Int)
-# Map static resources from the /public folder to the /assets URL path
+
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
 POST    /addToCart                          @controllers.CartController.addToCart
-GET     /cart/:prodId                       @controllers.CartController.getCartContent(prodId: Long)
-DELETE  /deleteProduct/:prodId              @controllers.CartController.deleteProductFromTheCart(prodId: Long)
-DELETE  /emptyCart/:prodId                  @controllers.CartController.emptyCart(prodId: Long)
+DELETE  /deleteProductFromCart/:prodId      @controllers.CartController.deleteProductFromTheCart(prodId: Long)
 
 POST    /newOpinion                         @controllers.OpinionsController.newOpinion
 GET /getAllOpinionsByproduct/:prodId        @controllers.OpinionsController.getAllOpinionsByproduct(prodId: Long)

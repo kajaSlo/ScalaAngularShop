@@ -12,7 +12,6 @@ export class CategoryService {
 
   public categoriesBS = new BehaviorSubject<string>(null);
 
-
   getCategories(){
     return this.http.get('http://localhost:9000/allcategories').pipe(map(res => res.json())) 
   }
@@ -30,8 +29,7 @@ export class CategoryService {
   }
 
   deleteCategory(id){
-    return this.http.delete('http://localhost:9000/deleteCategory/' + id).pipe(map(res => res.json()))
-   
+    return this.http.delete('http://localhost:9000/deleteCategory/' + id).pipe(map(res => res.json()))  
   }
 
 }

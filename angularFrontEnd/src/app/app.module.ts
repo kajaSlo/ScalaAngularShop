@@ -5,8 +5,6 @@ import { NgModule } from '@angular/core';
 import {HttpModule} from '@angular/http';
 import {FormsModule} from '@angular/forms';
 import {RouterModule, Routes} from '@angular/router';
-
-
 import { AppComponent } from './app.component';
 import { ProductComponent } from './components/product/product.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -23,7 +21,6 @@ import { AdminEditCategoryComponent } from './components/admin-edit-category/adm
 import { AdminEditProductComponent } from './components/admin-edit-product/admin-edit-product.component';
 
 const appRoutes: Routes = [
- // {path: ':product', component: ProductComponent},
   {path: 'categories', component: CategoriesComponent},
   {path: 'admin', component: AdminProfileComponent},
   {path: 'allProducts', component: ProductComponent},
@@ -34,12 +31,7 @@ const appRoutes: Routes = [
   {path: 'admin/categories', component: AdminCategoriesComponent},
   {path: 'admin/add-category', component: AdminAddCategoryComponent},
   {path: 'admin/edit-category/:catId', component: AdminEditCategoryComponent},
-
   {path: '', component: HelloComponentComponent},
-  //{path: '', component: AllAndWithCatProductsComponent},
-
-
-
 ]
 
 @NgModule({
@@ -57,16 +49,13 @@ const appRoutes: Routes = [
     AdminCategoriesComponent,
     AdminAddCategoryComponent,
     AdminEditCategoryComponent,
-    AdminEditProductComponent,
-    
+    AdminEditProductComponent,    
   ],
   imports: [
     BrowserModule,
     HttpModule,
     FormsModule,
     RouterModule.forRoot(appRoutes)
-
-
   ],
   providers: [
     ProductService,

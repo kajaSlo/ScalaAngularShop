@@ -1,6 +1,5 @@
 package controllers
 
-
 import javax.inject.Inject
 import daos.ShipmentsDAO
 import models.{Shipments, ShippingREST}
@@ -8,8 +7,8 @@ import play.api.libs.json.Json
 import play.api.mvc._
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
 import play.api.libs.concurrent.Execution.Implicits._
-class ShipmentsController @Inject() (shipmentsDAO: ShipmentsDAO) extends Controller {
 
+class ShipmentsController @Inject() (shipmentsDAO: ShipmentsDAO) extends Controller {
 
   def newShipment = Action { implicit request =>
     var json:ShippingREST = request.body.asJson.get.as[ShippingREST]
@@ -35,7 +34,6 @@ class ShipmentsController @Inject() (shipmentsDAO: ShipmentsDAO) extends Control
       result => Ok(Json.toJson(result))
     }
   }
-
 
   def editShipment(id: Int) = Action.async { implicit request =>
 

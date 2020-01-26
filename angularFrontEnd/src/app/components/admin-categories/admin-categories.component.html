@@ -1,18 +1,13 @@
-
 <app-admin-profile></app-admin-profile> 
-
   <h1 class="product-title">Categories</h1>
   <a class="btn btn-primary" routerLink="/admin/add-category">Add a category</a>
   <br><br>
-
-
 <table class="table">
     <tr bgcolor="#f9f9f9">
         <th>Title</th>
         <th>Edit</th>
         <th>Delete</th>
     </tr>
-
     <tr *ngFor="let category of categories?.value">
         <td>
             {{ category.name }}

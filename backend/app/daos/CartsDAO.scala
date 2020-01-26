@@ -20,20 +20,7 @@ class CartsDAO @Inject() (protected val dbConfigProvider: DatabaseConfigProvider
 
   def insert(cart: Carts): Future[Unit] = db.run(Cart += cart).map { _ => () }
 
-  //ZAMIENIC NA USERID zamiast PRODUCTID!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  def getCartContent(prodId: Long): Future[List[CartREST]] = {
-    val futureCart = db.run(Cart.filter(_.prodId === prodId).result)
-
-    futureCart.map(
-      _.map {
-        a => CartREST(prodId = a.prodId)
-      }.toList
-    )
-  }
-
   def deleteProduct(prodId: Long): Future[Int] = db.run(Cart.filter(_.prodId === prodId).delete)
-  def emptyCart(prodId: Long): Future[Int] = db.run(Cart.filter(_.prodId === prodId).delete)
-
 
   class CartsTable(tag: Tag) extends Table[Carts](tag, "Cart") {
     def prodId = column[Long]("prodId", O.PrimaryKey)
@@ -41,4 +28,5 @@ class CartsDAO @Inject() (protected val dbConfigProvider: DatabaseConfigProvider
 
     def * = (prodId) <> (models.Carts.apply _, models.Carts.unapply)
   }
+  
 }
